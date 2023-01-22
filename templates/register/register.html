@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <style>
+    * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /*   font-size: 0; */
+/*   overflow-x: hidden; */
+}
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #041C32;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.center {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.registration-form-wrapper {
+  width: 800px;
+  max-width: 90%;
+  background: #04293A;
+}
+
+.registration-form-left-side, 
+.registration-form-right-side {
+  width: 50%;
+  float: left;
+  padding: 10px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .registration-form-left-side, 
+  .registration-form-right-side {
+    width: 100%;
+    float: none;
+    padding: 10px 20px;
+    background: #064663;
+  }
+}
+
+.registration-form-left-side {
+  background: #04293A ;
+}
+
+.registration-form-right-side {
+  background: #064663;
+}
+
+.app-name, 
+.sign-up, 
+.container p {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app-name, 
+.sign-up {
+  margin-bottom: 10px;
+}
+
+.registration-form-right-side p {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f1f1f16e;
+}
+
+.field-wrapper {
+  margin-bottom: 10px;
+}
+
+.container label {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  display: inline-block;
+  margin: 3px 0px;
+}
+
+.container input {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.field-wrapper input[type=text],
+.field-wrapper input[type=email],
+.field-wrapper input[type=password],
+.field-wrapper input[type=date] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+#gender-options-wrapper label {
+  margin-right: 10px;
+  font-weight: normal;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px 20px;
+  margin: 8px 0;
+  background-color: #2188bf;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(18px, 3vw,22px);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #2f97ce;
+}
+  </style>
+</head>
+<body>
+  <div class="container center">
+    <div class="registration-form-wrapper">
+      
+      <div class="registration-form-left-side">
+        <h1 class="app-name">Acuity</h1>
+        <p class="login-info">First time here? Register quickly!!</p>
+        <br> 
+        {% if messages %}
+          {% for message in messages %}
+            <p class="alert alert-{{ message.tags }}" style="color: red;">{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+
+        <a href="/login" style="color: whitesmoke;">Already have an account?</a>
+      </div>
+      
+      <div class="registration-form-right-side">
+        <h2 class="sign-up">Sign Up</h2>
+        <p>Please fill in this form to create an account.</p>
+        <form id="register-form" action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="field-wrapper">
+            <label for="fname">First Name</label>
+            <input type="text" 
+                   id="fname"
+                   name="firstname" 
+                   placeholder="Your name.."
+                   required>
+           </div>
+          
+          <div class="field-wrapper">
+            <label for="lname">Last Name</label>
+            <input type="text" 
+                   id="lname" 
+                   name="lastname" 
+                   placeholder="Your last name.."
+                   required>
+          </div>
+
+          <div class="field-wrapper">
+            <label for="username">Username</label>
+            <input type="text" 
+                   id="uname" 
+                   name="username" 
+                   placeholder="username"
+                   required>
+          </div>
+          
+          <div class="field-wrapper">
+            <label for="email">Email</label>
+            <input type="email" 
+                   id="email" 
+                   name="emailaddress" 
+                   placeholder="Your email address.."
+                   required>
+          </div>
+          
+          <div class="field-wrapper">
+            <label for="password">Password</label>
+            <input type="password" 
+                   id="password" 
+                   name="password" 
+                   placeholder="Your Password.."
+                   required>
+          </div>
+
+          <!-- age -->
+          <div class="field-wrapper">
+            <label for="age">Age</label>
+            <input type='number'
+                   id="age" 
+                   name="age" 
+                   placeholder="Your Age.."
+                   required>
+
+        
+
+          <!-- college name input -->
+          <div class="field-wrapper">
+            <label for="college">College Name</label>
+            <input type="text" 
+                   id="college" 
+                   name="college" 
+                   placeholder="Your College Name.."
+                   required>
+          </div>
+
+          <!--branch name input-->
+          <div class="field-wrapper">
+            <label for="branch">Branch</label>
+            <input type="text" 
+                   id="branch" 
+                   name="branch" 
+                   placeholder="Your Branch.."
+                   required>
+
+          </div>
+
+          <!--year of study input-->
+          <div class="field-wrapper">
+            <label for="year">Year of Study</label>
+            <input type="text" 
+                   id="year" 
+                   name="year" 
+                   placeholder="Your Year of Study.."
+                   required>
+          </div>
+
+          <!--image-->
+          <div class="field-wrapper">
+            <label for="image">Image</label>
+            <input type="file" 
+                   id="image" 
+                   name="image" 
+                   placeholder="Your Image.."
+                   >
+          </div>
+          
+        
+         
+          
+          <div>
+            <input class="submit-btn" type="submit" value="Sign up">
+          </div>
+          
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</body>
+<script>
+  $(function() {
+  $('#register-form').submit(function(event) {
+    event.preventDefault();
+    return false;
+  }); 
+});
+</script>
+</html>

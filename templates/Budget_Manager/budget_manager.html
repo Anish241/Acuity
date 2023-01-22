@@ -1,0 +1,112 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+<section class="container text-center">
+  <h3 style="color: white;">Budget Manager</h3>
+  <a href="/bform"><p style="color: white;">Click here to add this month's budget</p></a>
+  <hr style="color: white; background-color: white;"> <br>
+  {% for budget in budget_obj%}
+  <p style="color: white;"> Month: {{budget.month}}</p>
+  <h3 style="color: white;">Budget Remaning: ₹ {{budget.budget_amount}}</h3>
+  {% endfor %}
+  <hr style="color: white; background-color: white;"> <br>
+
+
+
+  <div class="row">
+    {% for expense in expense_obj %}
+
+    <div class="col-md-3">
+      <a href="#">
+        <div class="card" style="background-color: #3F0071;">
+          <img class="card-img-top" src="https://www.practicalmoneyskills.com/assets/images/cards/creating_a_budget_sq_707_707.jpg" alt="">
+          <div class="card-body">
+            <h5 class="card-title ">
+              {{ expense.expense_name }}
+            </h5>
+            <p class="card-text">
+              Expense Limit: ₹ {{ expense.expense_limit }}
+            </p>
+            <p class="card-text">
+              Money Spent: ₹ {{ expense.expense_amount }}
+            </p>
+            {% if expense.amount_remaining != -1 %}
+            <p class="card-text">
+              Amt Remaining: ₹ {{ expense.amount_remaining }}
+            </p>
+            {% endif %}
+            {% if expense.amount_remaining == 0 %}
+            <p class="card-text" style="color: red;">
+             expense overloaded
+            </p>
+            {% endif %}
+
+            
+
+      
+            <br>
+            <form action="addb/" method="POST">
+              {% csrf_token %}
+              <input type="number" placeholder="Add Money spent" name="expense_amount" >
+              <input type="hidden" name="expense_id" value="{{ expense.id }}">
+              <button type="submit" class="btn btn-primary">Add</button>
+
+            </form>
+            <br>
+            <form action="deleteb/" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="expense_id" value="{{ expense.id }}">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          
+            
+          
+
+           
+
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% endfor %}
+
+    <div class="col-md-3">
+      <a href="#">
+        <div class="card" style="background-color: #3F0071;">
+          <img class="card-img-top" src="https://www.practicalmoneyskills.com/assets/images/cards/creating_a_budget_sq_707_707.jpg" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title " style="color: whitesmoke;">
+                Add Expense
+            </h5>
+             <a href="/budgetform"> 
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Add 
+                </button>
+              </a>
+             </a>
+           
+          </div>
+        </div>
+      </a>
+    </div>
+
+   
+  </div>
+
+
+</section>
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12" >
+        <div class="footer p-3 mt-4 text-center bg-dark text-light" style="background-color: #041C32;" >
+          <p>Acuity &copy; 2023</p>
+          <p>An Anish Gade production</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock content %}

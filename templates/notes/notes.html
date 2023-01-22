@@ -1,0 +1,51 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        {% for note in notes_obj %}
+        <div class="col-md-3">
+            <a href="editnote/">
+                <div class="card">
+                    <div class="card-header" style="color: whitesmoke;">{{note.title}}</div>
+                    <div class="card-body" style="color: whitesmoke;">{{note.description}}</div>
+                    <div class="card-footer mt-auto ">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="note_id" value="{{note.id}}">
+                            <button type="submit" class="btn btn-primary" style="color: whitesmoke; background-color: #183440;" name="viewf">View Files</button>
+                        </form>
+                        <hr>
+                        <form action="deleten/" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="note_id" value="{{note.id}}">
+                            <button type="submit" class="btn btn-primary" style="color: whitesmoke; background-color: #183440;"><i class="fa fa-trash" style="color: whitesmoke;"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+        <br><br>
+
+    </div>
+</div>
+<br><br>
+<div class="container">
+   
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4" style="color: whitesmoke;">Create Notes</legend>
+        </fieldset>
+        <div class="form-group">
+           
+           <a href="/noteform"><button  class="btn btn-primary" style="color: whitesmoke; background-color: #183440;">
+                Create
+            </button></a> 
+        </div>
+
+</div>
+
+{% endblock content %}

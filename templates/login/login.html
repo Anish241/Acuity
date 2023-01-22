@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Login Page</title>
+
+  <link rel="stylesheet" href="{%static 'css/login.css '%}"/>
+  </head>
+  <body>
+
+
+    <div class="container">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <h1 style="color: whitesmoke;">Acuity</h1>
+        {% for message in messages %}
+          <p class="error">{{ message }}</p>
+        {% endfor %}
+        <label for="username" style="color: whitesmoke;">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password" style="color: whitesmoke;">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Submit" style="background-color: #ECB365;">
+      </form>
+      <a href="/register" style="color: whitesmoke;"><p>Don't have an account?</p></a>
+      
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <style>
+        /* CSS for responsive design */
+@media (max-width: 600px) {
+  .profile-picture, .profile-info {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* CSS for general styling */
+body {
+  font-family: Arial, sans-serif;
+  color: whitesmoke;
+
+}
+
+main
+{
+    color: whitesmoke;
+}
+
+
+header {
+  text-align: center;
+  color: whitesmoke;
+  padding: 20px;
+}
+
+.profile-picture {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+}
+
+.profile-picture img {
+  width: 100%;
+
+}
+
+.profile-info {
+  display: inline-block;
+  width: 70%;
+  vertical-align: top;
+  padding-left: 20px;
+}
+
+footer {
+  text-align: center;
+
+  padding: 20px;
+
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  background-color: lightcyan; /* Green background color */
+  color: black; /* White text color */
+  border-radius: 20px; /* Rounded corners */
+  border: none; /* Remove border */
+  cursor: pointer; /* Add cursor pointer on hover */
+}
+
+.button:hover {
+  background-color: #3e8e41; /* Darker green background color on hover */
+}
+
+
+
+</style>
+</head>
+<body>
+    <header>
+      <h1>{{user.username}}</h1>
+    </header>
+    <main>
+        <div class="profile-picture">
+            <img src="{{profile_obj.profileimg.url}}" alt="">
+        </div>
+      <div class="profile-info">
+        <h2>{{profile_obj.first_name}} {{profile_obj.last_name}} {{profile_obj.age}} </h2>
+        <hr style="background-color: whitesmoke;">
+        <br>
+        <h4><b style="color: black;">College: </b> {{profile_obj.college}}</h4>
+        <h4><b style="color: black;">Branch: </b>{{profile_obj.branch}}</h4>
+        <h4><b style="color: black;">Year: </b>{{profile_obj.year}}</h4>
+        <a href="/settings"><button class="button">Edit Profile</button></a>
+      </div>
+    </main>
+    <footer>
+      <p style="color: black;">Contact: <a href="{{profile_obj.emailaddress.url}}" style="color: whitesmoke;">{{profile_obj.email}}</a></p>
+    </footer>
+  </body>
+
+{% endblock %}
+</html>

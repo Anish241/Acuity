@@ -1,0 +1,97 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+<section class="container text-center">
+  <h3 style="color: white;">Attendance Manager</h3>
+
+  <hr style="color: white; background-color: white;"> <br>
+  <div class="row">
+    {% for course in course_obj %}
+
+    <div class="col-md-3">
+      <a href="#">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/course.png' %}" alt="">
+          <div class="card-body">
+            <h5 class="card-title ">
+              {{ course.course_name }}
+            </h5>
+            <p class="card-text">
+              Total lectures: {{ course.total_lecs }}
+            </p>
+            <p class="card-text">
+              Min attendance: {{ course.minimum_attendance }} %
+            </p>
+            {% if course.lec_missed != 0 %}
+            <p>
+              Missed: {{ course.lec_missed }}
+            </p>
+            
+            <p>
+              Can be missed: {{course.lec_can_be_missed}}
+            </p>
+            {% endif %}
+            <br>
+          
+            
+          
+
+            <form action="" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="course_id" value="{{ course.id }}">
+              <button type="submit" class="btn btn-primary">+ Missed</button>
+            </form>
+
+            <br>
+            <form action="deletec/" method="POST">
+              {% csrf_token %}
+            <input type="hidden" name="course_id" value="{{ course.id }}">
+            <button class="btn btn-primary" type="submit">Delete</button>
+            </form>
+
+          </div>
+        </div>
+      </a>
+    </div>
+
+    {% endfor %}
+
+    <div class="col-md-3">
+      <a href="#">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/course.png' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title " style="color: whitesmoke;">
+                Add Course
+            </h5>
+             <a href="/courseform"> 
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Add 
+                </button>
+              </a>
+             </a>
+           
+          </div>
+        </div>
+      </a>
+    </div>
+
+   
+  </div>
+
+
+</section>
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12" >
+        <div class="footer p-3 mt-4 text-center bg-dark text-light" style="background-color: #041C32;" >
+          <p>Acuity &copy; 2023</p>
+          <p>An Anish Gade production</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock content %}

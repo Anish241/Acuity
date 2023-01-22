@@ -1,0 +1,71 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+{% block content %}
+
+<div class="page-header" style="margin-bottom: 2rem;">
+    
+    <h1 class="text-center text-white">{{notes_obj.title}}</h1>
+    
+</div>
+<div class="container">
+    <div class="row">
+       {% for file in fs%}
+        <div class="col-md-3">
+            <a href="#">
+                <div class="card">
+                    <div class="card-header" style="color: whitesmoke;">{{file.name}}</div>
+                    
+                    <div class="card-footer mt-auto ">
+                        <a href="{{file.file.url}}">
+                            {% csrf_token %}
+                            <input type="hidden" name="note_id" value="{{notes_obj.id}}">
+                            <button  class="btn btn-primary" style="color: whitesmoke; background-color: #183440;" name="viewfi">View</button>
+                        </a>
+                        <hr>
+                        <form action="deletef/" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="note_id" value="{{notes_obj.id}}">
+                            <input type="hidden" name="file_id" value="{{file.id}}">
+                            <button type="submit" class="btn btn-primary" style="color: whitesmoke; background-color: #183440;"><i class="fa fa-trash" style="color: whitesmoke;"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+       
+
+        <br><br>
+
+    </div>
+</div>
+<br><br>
+<div class="container">
+   
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4" style="color: whitesmoke;">Add file</legend>
+        </fieldset>
+        <div class="form-group">
+           <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="note_id" value="{{notes_obj.id}}">
+           <button type="submit"  class="btn btn-primary" style="color: whitesmoke; background-color: #183440;" name="idbtn">
+                Add
+            </button>
+            </form>
+        </div>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4" style="color: whitesmoke;">Add file</legend>
+        </fieldset>
+        <div class="form-group">
+           
+           
+           <a href="/notes"><button   class="btn btn-primary" style="color: whitesmoke; background-color: #183440;" >
+                Back
+            </button></a>
+           
+        </div>
+
+</div>
+
+{% endblock content %}

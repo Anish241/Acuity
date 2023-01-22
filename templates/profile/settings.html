@@ -1,0 +1,115 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+<div class="h-100 d-flex align-items-center justify-content-center">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="Profile img">Profile Pic</label>
+        <input type="file" name="image" placeholder="Profile Img">
+        <button type="submit" name="imgbtn" class="btn btn-primary btn-sm">Change</button>
+    </form>
+</div>
+<br>
+<hr>
+<br>
+        <div class="h-100 d-flex align-items-center justify-content-center">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" name="fname" placeholder="First Name">
+            <button type="submit" name="fnamebtn" class="btn btn-primary btn-sm">Change</button>
+        </form>
+        </div>
+        
+        <br>
+        <hr>
+        <br>
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="lname" placeholder="Last Name">
+                <button type="submit" name="lnamebtn" class="btn btn-primary btn-sm">Change</button>
+            </form>
+         </div>
+         <br>
+         <hr>
+         <br>
+         <div class="h-100 d-flex align-items-center justify-content-center">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="oldpassword" placeholder="Old Password">
+                <input type="text" name="newpassword" placeholder="New Password">
+                <button type="submit" name="passbtn" class="btn btn-primary btn-sm">Change</button>
+            </form>
+         </div>
+         <br>
+         <hr>
+         <br>
+         <div class="h-100 d-flex align-items-center justify-content-center">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="email" placeholder="Email">
+                <button type="submit" name="emailbtn" class="btn btn-primary btn-sm">Change</button>
+            </form>
+        </div>
+            
+            <br>
+            <hr>
+            <br>
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="college" placeholder="College">
+                    <button type="submit" name="collegebtn" class="btn btn-primary btn-sm">Change</button>
+                </form>
+            </div>
+                
+                <br>
+                <hr>
+                <br>
+                <div class="h-100 d-flex align-items-center justify-content-center">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="branch" placeholder="Branch">
+                        <button type="submit" name="branchbtn" class="btn btn-primary btn-sm">Change</button>
+                    </form>
+                </div>
+                    
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="h-100 d-flex align-items-center justify-content-center">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="yos" placeholder="Year of Study">
+                            <button type="submit" name="yosbtn" class="btn btn-primary btn-sm">Change</button>
+                        </form>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="h-100 d-flex align-items-center justify-content-center">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="number" name="age" placeholder="Age">
+                            <button type="submit" name="agebtn" class="btn btn-primary btn-sm">Change</button>
+                        </form>
+                    </div>
+
+                    <footer>
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-md-12" >
+                              <div class="footer p-3 mt-4 text-center bg-dark text-light" style="background-color: #041C32;" >
+                                <p>Acuity &copy; 2023</p>
+                                <p>An Anish Gade production</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </footer>
+
+   
+
+
+
+{% endblock %}
