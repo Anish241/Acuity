@@ -1,1 +1,1 @@
-web: gunicorn 'Acuity.wsgi'
+web: gunicorn Acuity.wsgi --log-file -
