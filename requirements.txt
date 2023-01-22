@@ -6,3 +6,4 @@ platformdirs==2.5.2
 sqlparse==0.4.3
 tzdata==2022.5
 virtualenv==20.16.5
+Pillow==8.4.0
