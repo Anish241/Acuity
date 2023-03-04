@@ -128,7 +128,7 @@ def budgetform(request):
         expense = Expense.objects.create(user=user, expense_name=expense_name, expense_limit=expense_limit)
         expense.save()
         return redirect("/budget_manager")
-    return render(request, "budget_manager/budgetform.html", {})
+    return render(request, "Budget_Manager/budgetform.html", {})
 
 @login_required(login_url='/login')
 def deletec(request):
@@ -152,7 +152,7 @@ def bform(request):
         budget = Budget.objects.create(user=user, month=month, budget_amount=total_budget)
         budget.save()
         return redirect("/budget_manager")
-    return render(request, "budget_manager/bform.html", {})
+    return render(request, "Budget_Manager/bform.html", {})
 @login_required(login_url='/login')
 def addb(request):
     if request.method == "POST":
