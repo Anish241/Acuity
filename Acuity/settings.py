@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-3n527n*v!0at23hx=z5-dl)3(cb85wj5shh1k@zzn8!%j)#9vr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','https://acuity-production-622f.up.railway.app/','https://acuity-production-622f.up.railway.app']
+ALLOWED_HOSTS = ['*','https://acuity-production-622f.up.railway.app/','https://acuity-production-622f.up.railway.app','https://acuity-production-622f.up.railway.app']
 
 
 # Application definition
@@ -48,7 +48,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
+    # "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
