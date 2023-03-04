@@ -116,7 +116,7 @@ def budget_manager(request):
     profile_obj = Profile.objects.get(user=user)
     expense_obj = Expense.objects.filter(user=user)
     budget_obj = Budget.objects.filter(user=user)   
-    return render(request, "budget_manager/budget_manager.html", {'expense_obj': expense_obj, 'profile_obj': profile_obj,'budget_obj': budget_obj})
+    return render(request, "Budget_Manager/budget_manager.html", {'expense_obj': expense_obj, 'profile_obj': profile_obj,'budget_obj': budget_obj})
 
 @login_required(login_url='/login')
 def budgetform(request):
