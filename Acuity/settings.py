@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-3n527n*v!0at23hx=z5-dl)3(cb85wj5shh1k@zzn8!%j)#9vr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','https://acuity-production-622f.up.railway.app/','https://acuity-production-622f.up.railway.app','https://acuity-production-622f.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,11 +44,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    #whitenoise middleware
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    # "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -129,5 +127,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-CSRF_TRUSTED_ORIGINS = ["https://acuity-production.up.railway.app"]
 
